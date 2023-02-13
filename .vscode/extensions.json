@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "github.copilot",
+        "sirmspencer.vscode-autohide",
+        "ms-dotnettools.csharp",
+        "streetsidesoftware.code-spell-checker",
+        "github.vscode-pull-request-github",
+        "yzhang.markdown-all-in-one",
+        "ms-vscode.powershell",
+        "jgclark.vscode-todo-highlight",
+        "shardulm94.trailing-spaces"
+    ]
+}
