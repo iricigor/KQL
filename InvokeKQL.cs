@@ -3,7 +3,7 @@
 namespace KQL
 {
     [Cmdlet(VerbsLifecycle.Invoke,"KQL")]
-    public class InvokeKQLCmd : PSCmdlet
+    public class InvokeKQL : PSCmdlet
     {
         [Parameter(
             Mandatory = false,
