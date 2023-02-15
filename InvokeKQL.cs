@@ -1,4 +1,6 @@
 ﻿using System.Management.Automation;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace KQL
 {
@@ -20,19 +22,30 @@ namespace KQL
             ValueFromPipelineByPropertyName = true)]
         public string Database { get; set; } = "https://help.kusto.windows.net/Samples";
 
+        private Kusto.Data.Common.ICslQueryProvider client;
+
         protected override void BeginProcessing()
         {
-            WriteVerbose("Begin!");
+            WriteVerbose($"Connecting database {Database}...");
+            client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider($"{Database};Fed=true;");
         }
 
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
         protected override void ProcessRecord()
         {
             foreach (string Q1 in Query) {
-                WriteVerbose("Process!");
-                var client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider($"{Database};Fed=true;");
+                WriteVerbose($"Executing query '{Q1}' ...");
                 var reader = client.ExecuteQuery(Q1);
-                WriteObject(reader);
+                WriteVerbose("Parsing query results...");
+                while (reader.Read()) {
+                    PSObject rowData = new PSObject();
+                    Enumerable.Range(0, reader.FieldCount)
+                        .Select(i => new PSNoteProperty(reader.GetName(i), reader.GetValue(i)))
+                        .ToList()
+                        .ForEach(rowData.Properties.Add);
+                    WriteObject(rowData);
+                };
+                WriteVerbose("Query complete!");
             }
         }
 

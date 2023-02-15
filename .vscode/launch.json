@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "pwsh",
+            "program": "powershell.exe",
             "args": [
                 "-NoExit",
                 "-NoProfile",
