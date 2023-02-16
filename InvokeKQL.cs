@@ -52,6 +52,7 @@ namespace KQL
         // This method will be called once at the end of pipeline execution; if no input is received, this method is not called
         protected override void EndProcessing()
         {
+            client.Dispose();
             WriteVerbose("End!");
         }
     }
