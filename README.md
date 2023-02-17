@@ -35,3 +35,7 @@ Invoke-KQL -Database 'https://help.kusto.windows.net/SampleLogs' -Query 'RawSysL
 # Run Kusto commands
 Invoke-KQL '.show tables'
 ```
+
+## Testing pipeline
+
+[![Build Status](https://dev.azure.com/iiric/PS1/_apis/build/status/iricigor.KQL?branchName=master)](https://dev.azure.com/iiric/PS1/_build/latest?definitionId=50&branchName=master)

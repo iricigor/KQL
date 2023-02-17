@@ -1,3 +1,9 @@
+Describe "Fake test" {
+    It "should start testing" {
+        $true | Should -BeTrue
+    }
+}
+
 Describe "Module tests" {
     It "has module imported" {
         Get-Module KQL | Should -Not -BeNullOrEmpty
