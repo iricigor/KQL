@@ -15,11 +15,10 @@ steps:
   inputs:
     command: 'build'
     arguments: '--output ./bin/Debug/'
-
-- task: PowerShell@2
+      
+- task: AzurePowerShell@5
   inputs:
-    targetType: 'inline'
-    script: |
+    ScriptType: 'InlineScript'
+    Inline: |
       Import-Module ./bin/Debug/KQL.dll -Force
       Invoke-Pester -Output Detailed
-      
