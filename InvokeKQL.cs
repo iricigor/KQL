@@ -28,13 +28,12 @@ namespace KQL
 
         protected override void BeginProcessing()
         {
-            WriteVerbose($"Connecting database {Database}...");
+            WriteVerbose($"Creating database connection {Database}...");
             Kusto.Data.KustoConnectionStringBuilder kcsb = new Kusto.Data.KustoConnectionStringBuilder(Database) {
-                FederatedSecurity = true
+                FederatedSecurity = true,
+                ApplicationClientId = "683e0216-8599-48d9-90ee-ca7e54dff2df",
             };
             client = KustoClientFactory.CreateCslQueryProvider(kcsb);
-            WriteVerbose("Connected!");
-
             requestProperties = new ClientRequestProperties() {
                 ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString(),
             };

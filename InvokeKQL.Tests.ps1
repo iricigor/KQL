@@ -70,4 +70,8 @@ Describe 'Negative tests' {
     It 'fails on invalid database' {
         {Invoke-KQL 'StormEvents | count' -Database 'https://help.kusto.windows.net/Invalid'} | Should -Throw
     }
+
+    It 'fails on invalid cluster' {
+        {Invoke-KQL 'StormEvents | count' -Database 'https://help2.kusto.windows.net/Samples'} | Should -Throw
+    }
 }
