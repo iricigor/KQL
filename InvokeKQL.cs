@@ -30,8 +30,7 @@ namespace KQL
         {
             WriteVerbose($"Creating database connection {Database}...");
             Kusto.Data.KustoConnectionStringBuilder kcsb = new Kusto.Data.KustoConnectionStringBuilder(Database) {
-                //FederatedSecurity = true,
-                ApplicationClientId = "683e0216-8599-48d9-90ee-ca7e54dff2df",
+                FederatedSecurity = true
             };
             client = KustoClientFactory.CreateCslQueryProvider(kcsb);
             requestProperties = new ClientRequestProperties() {
