@@ -22,3 +22,4 @@ steps:
     Inline: |
       Import-Module ./bin/Debug/KQL.dll -Force
       Invoke-Pester -Output Detailed
+    azurePowerShellVersion: 'LatestVersion'
