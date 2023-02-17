@@ -8,7 +8,7 @@ trigger:
 - master
 
 pool:
-  vmImage: win2019
+  vmImage: windows-2022
 
 steps:
 - task: DotNetCoreCLI@2
