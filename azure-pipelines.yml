@@ -21,3 +21,5 @@ steps:
     targetType: 'inline'
     script: |
       Import-Module ./bin/Debug/KQL.dll -Force
+      Invoke-Pester -Output Detailed
+      
