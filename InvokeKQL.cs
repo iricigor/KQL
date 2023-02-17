@@ -23,11 +23,15 @@ namespace KQL
         public string Database { get; set; } = "https://help.kusto.windows.net/Samples";
 
         private Kusto.Data.Common.ICslQueryProvider client;
+        private Kusto.Data.Common.ClientRequestProperties clientRP;
 
         protected override void BeginProcessing()
         {
             WriteVerbose($"Connecting database {Database}...");
             client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider($"{Database};Fed=true;");
+            clientRP = new Kusto.Data.Common.ClientRequestProperties();
+            clientRP.ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString();
+            clientRP.PrincipalIdentity = null;
         }
 
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
@@ -35,7 +39,7 @@ namespace KQL
         {
             foreach (string Q1 in Query) {
                 WriteVerbose($"Executing query '{Q1}' ...");
-                var reader = client.ExecuteQuery(Q1);
+                var reader = client.ExecuteQuery(Q1, clientRP);
                 WriteVerbose("Parsing query results...");
                 while (reader.Read()) {
                     PSObject rowData = new PSObject();
