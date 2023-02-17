@@ -31,7 +31,7 @@ namespace KQL
             WriteVerbose($"Creating database connection {Database}...");
             Kusto.Data.KustoConnectionStringBuilder kcsb = new Kusto.Data.KustoConnectionStringBuilder(Database) {
                 FederatedSecurity = true
-            };
+            }.WithAadUserManagedIdentity("d8e2f047-99b7-48e8-89d1-0e9b6e0b2464");
             client = KustoClientFactory.CreateCslQueryProvider(kcsb);
             requestProperties = new ClientRequestProperties() {
                 ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString(),
