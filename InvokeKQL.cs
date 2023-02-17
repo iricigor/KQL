@@ -29,9 +29,12 @@ namespace KQL
         {
             WriteVerbose($"Connecting database {Database}...");
             client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider($"{Database};Fed=true;");
-            clientRP = new Kusto.Data.Common.ClientRequestProperties();
-            clientRP.ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString();
-            clientRP.PrincipalIdentity = null;
+            clientRP = new Kusto.Data.Common.ClientRequestProperties() {
+                ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString(),
+                AuthorizationScheme = null
+            };
+            // clientRP.ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString();
+            // clientRP.PrincipalIdentity = null;
         }
 
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
