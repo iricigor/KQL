@@ -18,6 +18,7 @@ steps:
       
 - task: AzurePowerShell@5
   inputs:
+    azureSubscription: 'iiric visual studio subscription'
     ScriptType: 'InlineScript'
     Inline: |
       Import-Module ./bin/Debug/KQL.dll -Force
