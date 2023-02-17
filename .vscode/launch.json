@@ -14,7 +14,7 @@
                 "-NoExit",
                 "-NoProfile",
                 "-Command",
-                "Import-Module ${workspaceFolder}/bin/Debug/net472/KQL.dll -Force",
+                "Import-Module ${workspaceFolder}/bin/Debug/KQL.dll -Force",
             ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
