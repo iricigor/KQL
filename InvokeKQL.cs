@@ -1,7 +1,6 @@
 ﻿using System.Management.Automation;
 using System.Linq;
-using Kusto.Data.Net.Client;
-using Kusto.Data.Common;
+using System.Collections.Generic;
 
 namespace KQL
 {
@@ -23,19 +22,12 @@ namespace KQL
             ValueFromPipelineByPropertyName = true)]
         public string Database { get; set; } = "https://help.kusto.windows.net/Samples";
 
-        private ICslQueryProvider client;
-        private ClientRequestProperties requestProperties;
+        private Kusto.Data.Common.ICslQueryProvider client;
 
         protected override void BeginProcessing()
         {
-            WriteVerbose($"Creating database connection {Database}...");
-            Kusto.Data.KustoConnectionStringBuilder kcsb = new Kusto.Data.KustoConnectionStringBuilder(Database) {
-                FederatedSecurity = true
-            }.WithAadUserManagedIdentity("d8e2f047-99b7-48e8-89d1-0e9b6e0b2464");
-            client = KustoClientFactory.CreateCslQueryProvider(kcsb);
-            requestProperties = new ClientRequestProperties() {
-                ClientRequestId = "Invoke-KQL;ActivityId=" + System.Guid.NewGuid().ToString(),
-            };
+            WriteVerbose($"Connecting database {Database}...");
+            client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider($"{Database};Fed=true;");
         }
 
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
@@ -43,7 +35,7 @@ namespace KQL
         {
             foreach (string Q1 in Query) {
                 WriteVerbose($"Executing query '{Q1}' ...");
-                var reader = client.ExecuteQuery(Q1, requestProperties);
+                var reader = client.ExecuteQuery(Q1);
                 WriteVerbose("Parsing query results...");
                 while (reader.Read()) {
                     PSObject rowData = new PSObject();
