@@ -2,10 +2,17 @@
 
 PowerShell module that enables running KQL (Kusto Query Language) queries directly from PowerShell
 
+
+[![latest version](https://img.shields.io/powershellgallery/v/KQL.svg?label=latest+version)](https://www.powershellgallery.com/packages/KQL)
+[![downloads](https://img.shields.io/powershellgallery/dt/KQL.svg?label=downloads)](https://www.powershellgallery.com/pagitckages/KQL)
+[![platforms](https://img.shields.io/powershellgallery/p/KQL)](https://www.powershellgallery.com/pagitckages/KQL)
+
+
+
 ## Usage
 
 ```ps
-Install-Module KQL
+Install-Module -Name KQL -Scope CurrentUser
 Invoke-KQL 'StormEvents | take 2'
 ```
 
