@@ -4,8 +4,8 @@ PowerShell module that enables running KQL (Kusto Query Language) queries direct
 
 
 [![latest version](https://img.shields.io/powershellgallery/v/KQL.svg?label=latest+version)](https://www.powershellgallery.com/packages/KQL)
-[![downloads](https://img.shields.io/powershellgallery/dt/KQL.svg?label=downloads)](https://www.powershellgallery.com/pagitckages/KQL)
-[![platforms](https://img.shields.io/powershellgallery/p/KQL)](https://www.powershellgallery.com/pagitckages/KQL)
+[![downloads](https://img.shields.io/powershellgallery/dt/KQL.svg?label=downloads)](https://www.powershellgallery.com/packages/KQL)
+[![platforms](https://img.shields.io/powershellgallery/p/KQL)](https://www.powershellgallery.com/packages/KQL)
 
 
 
