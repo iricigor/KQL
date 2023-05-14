@@ -21,6 +21,5 @@ steps:
     azureSubscription: 'Visual Studio Enterprise I.Iric (6558e738-8188-4771-a5fb-b62f974f971c)'
     ScriptType: 'InlineScript'
     Inline: |
-      Import-Module ./bin/Debug/KQL.dll -Force
-      Invoke-Pester -Output Detailed
+      Invoke-Pester -Output Detailed -TagFilter 'Module'
     azurePowerShellVersion: 'LatestVersion'
