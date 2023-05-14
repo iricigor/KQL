@@ -23,6 +23,7 @@ Invoke-KQL 'StormEvents | take 2'
 
 ## Known issues
 - Due to nuget compatibility issues, the module is running only on Windows PowerShell at the moment
+- For the same reasons, it supports only implicit authentication (i.e. on user behalf)
 
 ## Examples
 

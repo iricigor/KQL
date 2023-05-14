@@ -12,10 +12,10 @@
 RootModule = 'KQL.dll'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
-# CompatiblePSEditions = @('Desktop')
+CompatiblePSEditions = @('Desktop')
 
 # ID used to uniquely identify this module
 GUID = '4c3f9d2c-5039-4ebc-846f-7baebad29c9a'
@@ -33,7 +33,7 @@ Copyright = '(c) Iric Igor. All rights reserved.'
 Description = 'PowerShell module that enables running KQL (Kusto Query Language) queries directly from PowerShell'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
