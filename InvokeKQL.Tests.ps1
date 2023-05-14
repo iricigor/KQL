@@ -1,10 +1,15 @@
-Describe "Fake test" {
+BeforeAll {
+    # Import module
+    Import-Module -Name ./bin/Debug/KQL.dll -Force
+}
+
+Describe "Fake test" -Tags "Fake" {
     It "should start testing" {
         $true | Should -BeTrue
     }
 }
 
-Describe "Module tests" {
+Describe "Module tests" -Tags "Module" {
     It "has module imported" {
         Get-Module KQL | Should -Not -BeNullOrEmpty
     }
@@ -17,7 +22,7 @@ Describe "Module tests" {
     }
 }
 
-Describe 'Default command tests' {
+Describe 'Default command tests' -Tags "Default" {
 
     # Default values for parameters are set in InvokeKQL.ps1
     # Query = "StormEvents | count"
@@ -40,7 +45,7 @@ Describe 'Default command tests' {
     }
 }
 
-Describe 'README tests' {
+Describe 'README tests' -Tags "Readme" {
 
     It 'accepts Verbose flag' {
         Invoke-KQL 'StormEvents | project StartTime, State, EventNarrative | take 5' -Verbose | Should -HaveCount 5
@@ -63,7 +68,7 @@ Describe 'README tests' {
     }
 }
 
-Describe 'Negative tests' {
+Describe 'Negative tests' -Tags "Negative" {
 
     It 'fails on invalid query' {
         {Invoke-KQL 'StormEvents | count | invalid'} | Should -Throw
