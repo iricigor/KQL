@@ -12,7 +12,7 @@
 RootModule = 'KQL.dll'
 
 # Version number of this module.
-ModuleVersion = '0.0.3'
+ModuleVersion = '0.0.4'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop')
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('Azure','Kusto','DataExplorer', 'ADX', 'KQL', 'Windows', 'Linux')
+        Tags = @('Azure','Kusto','DataExplorer', 'ADX', 'KQL', 'Windows')
 
         # A URL to the license for this module.
         # LicenseUri = ''
