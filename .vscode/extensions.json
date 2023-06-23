@@ -8,6 +8,7 @@
         "yzhang.markdown-all-in-one",
         "ms-vscode.powershell",
         "jgclark.vscode-todo-highlight",
-        "shardulm94.trailing-spaces"
+        "shardulm94.trailing-spaces",
+        "ms-dotnettools.csdevkit"
     ]
 }
